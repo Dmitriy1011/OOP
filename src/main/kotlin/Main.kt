@@ -37,29 +37,14 @@ object WallService {
     private var privateId = 0;
 
     fun add(post: Post): Post {
-        for((index, postInArray) in posts.withIndex()) {
-            if(post.id != postInArray.id) {
-                posts[index] = post.copy(id = privateId + 1)
-                privateId += 1
-                posts += post
-            }
-        }
+        posts += post.copy(id = privateId++)
         return posts.last()
     }
 
     fun update(post: Post): Boolean {
         for ((index, postInArray) in posts.withIndex()) {
             if(post.id == postInArray.id) {
-                posts[index] = post.copy(
-                    id = 1,
-                    createdBy = "John Smith",
-                    text = "This article about the greatest president of USA - Avraam Linkoln",
-                    comments = Comments(1, canPost = true, groupsCanPost = true,canClose = false, canOpen = true),
-                    likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-                    postType = "Article",
-                    canDelete = false,
-                    isFavourite = true
-                )
+                posts[index] = post.copy()
                 return true
             }
         }
