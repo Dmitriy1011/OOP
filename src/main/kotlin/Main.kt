@@ -11,7 +11,7 @@ data class Post(
     val postType: String,
     val canDelete: Boolean,
     val isFavourite: Boolean,
-    val attachments: Array<Attachments>
+//    val attachments: Array<Attachments>
 )
 
 data class Comments(
