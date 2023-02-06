@@ -11,7 +11,6 @@ data class Post(
     val postType: String,
     val canDelete: Boolean,
     val isFavourite: Boolean,
-    val attachments: String
 )
 
 data class Comments(
@@ -28,44 +27,6 @@ data class Likes(
     val canLike: Boolean,
     val canPublish: Boolean
 )
-
-
-interface Attachments {
-    val type: String
-}
-
-class AudioAttachment(
-    override val type: String = "audio",
-    val insideAttachment: Audio
-): Attachments {
-
-}
-
-class VideoAttachment(
-    override val type: String = "video",
-    val insideAttachment: Video
-): Attachments {
-
-}
-
-class Audio(
-    val audioId: Int,
-    val ownerId: Int,
-    val artist: String,
-    val title: String,
-    val duration: Int
-)
-
-class Video(
-    val videoId: Int,
-    val ownerId: Int,
-    val title: String,
-    val description: String,
-    val duration: Int
-)
-
-
-
 
 object WallService {
 
@@ -108,7 +69,6 @@ fun main() {
         "post",
         canDelete = true,
         isFavourite = false,
-        attachments = "audio"
     )
 
     println(post)

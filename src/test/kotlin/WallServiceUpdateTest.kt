@@ -26,7 +26,6 @@ class WallServiceUpdateTest {
                 postType = "Article",
                 canDelete = false,
                 isFavourite = true,
-                attachments = "audio"
             )
         )
 
@@ -50,7 +49,6 @@ class WallServiceUpdateTest {
                 postType = "Article",
                 canDelete = false,
                 isFavourite = true,
-                "video"
             )
         )
 
@@ -65,8 +63,7 @@ class WallServiceUpdateTest {
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
-                isFavourite = true,
-                "audio"
+                isFavourite = true
             )
         )
 
@@ -81,8 +78,7 @@ class WallServiceUpdateTest {
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
-                isFavourite = true,
-                "video"
+                isFavourite = true
             )
         )
 
@@ -97,8 +93,7 @@ class WallServiceUpdateTest {
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
-                isFavourite = true,
-                "audio"
+                isFavourite = true
             )
         )
 
@@ -112,8 +107,7 @@ class WallServiceUpdateTest {
             likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
             postType = "Article",
             canDelete = false,
-            isFavourite = true,
-            "video"
+            isFavourite = true
         )
 
         val updateResult2 = Post(
@@ -126,8 +120,7 @@ class WallServiceUpdateTest {
             likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
             postType = "Article",
             canDelete = false,
-            isFavourite = true,
-            "video"
+            isFavourite = true
         )
 
         val result = service.update(updateResult)
