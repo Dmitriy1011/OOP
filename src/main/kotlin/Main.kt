@@ -30,7 +30,6 @@ data class Post(
     }
 }
 
-
 data class Comments(
     val count: Int,
     val canPost: Boolean,
@@ -46,41 +45,30 @@ data class Likes(
     val canPublish: Boolean
 )
 
-interface Attachments {
-    val type: String
-}
+sealed class Attachments (val type: String)
 
-class AudioAttachment(
+data class AudioAttachment(
     val insideAttachment: Audio
-): Attachments {
-    override val type: String = "audio"
-}
+): Attachments ("audio")
 
-class VideoAttachment(
+data class VideoAttachment(
     val insideAttachment: Video
-): Attachments {
-    override val type: String = "video"
-}
+): Attachments ("video")
 
-class PhotoAttachment(
+data class PhotoAttachment(
     val insideAttachment: Photo
-): Attachments {
-    override val type: String = "photo"
-}
+): Attachments ("photo")
 
-class DocumentAttachment(
+
+data class DocumentAttachment(
     val insideAttachment: Doc
-): Attachments {
-    override val type: String = "doc"
-}
+): Attachments ("doc")
 
-class LinkAttachment(
+data class LinkAttachment(
     val insideAttachment: Link
-): Attachments {
-    override val type: String = "link"
-}
+): Attachments ("link")
 
-class Audio(
+data class Audio(
     val id: Int,
     val ownerId: Int,
     val artist: String,
@@ -88,7 +76,7 @@ class Audio(
     val duration: Int
 )
 
-class Video(
+data class Video(
     val id: Int,
     val ownerId: Int,
     val title: String,
@@ -96,7 +84,7 @@ class Video(
     val duration: Int
 )
 
-class Photo(
+data class Photo(
     val id: Int,
     val albumId: Int,
     val ownerId: Int,
@@ -104,7 +92,7 @@ class Photo(
     val text: String
 )
 
-class Doc(
+data class Doc(
     val id: Int,
     val ownerId: Int,
     val title: String,
@@ -112,7 +100,7 @@ class Doc(
     val ext: String
 )
 
-class Link(
+data class Link(
     val url: Int,
     val title: Int,
     val caption: String,
@@ -150,20 +138,6 @@ object WallService {
 
 
 fun main() {
-    val post = Post(
-        1,
-        2,
-        "createdBy",
-        15,
-        text = null,
-//        "text",
-//        comments = Comments(3, canPost = false, groupsCanPost = false, canClose = true, canOpen = true),
-        comments = null,
-        likes = Likes(5, userLikes = true, canLike = true, canPublish = false),
-        "post",
-        canDelete = true,
-        isFavourite = false,
-    )
-
-    println(post)
+//    val attachment: Attachments = AudioAttachment("audio")
+//    println(attachment.type)
 }
