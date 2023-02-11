@@ -138,6 +138,6 @@ object WallService {
 
 
 fun main() {
-//    val attachment: Attachments = AudioAttachment("audio")
-//    println(attachment.type)
+    val attachment: Attachments = AudioAttachment(Audio(1, 1, "", "", 1))
+    println(attachment.type)
 }
