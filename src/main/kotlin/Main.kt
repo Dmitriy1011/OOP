@@ -129,6 +129,7 @@ data class Donut(
 data class ReportComment(
     val ownerId: Int,
     val commentId: Int,
+    val reason: Int
 )
 
 class PostNotFoundException(message: String) : RuntimeException(message)
