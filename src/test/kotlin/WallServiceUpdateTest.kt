@@ -276,6 +276,7 @@ class WallServiceUpdateTest {
         )
 
         service.createComment(0, Comment(1, 2, 3, "text", Donut(true, "smth")))
+        service.createComment(1, Comment(2, 3, 4, "text", Donut(true, "anything")))
 
         val result = service.reportComment(1, 5)
 
