@@ -165,7 +165,7 @@ object WallService {
                    return throw ReportNumberNotFoundException("Report is not found")
                }
            }
-           return throw PostNotFoundException("Post is not found")
+           return throw PostNotFoundException("Comment is not found")
        }
         return -1
     }
