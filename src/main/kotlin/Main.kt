@@ -142,7 +142,7 @@ object WallService {
 
     private var posts = emptyArray<Post>()
     private var comments = emptyArray<Comment>()
-    private var reports = emptyArray<ReportComment>()
+    private var reports = arrayOf(1, 2, 3, 4, 5, 6, 8)
     private var privateId = 0;
 
     fun add(post: Post): Post {
@@ -151,22 +151,33 @@ object WallService {
     }
 
 
-    fun reportComment() {
+    class PostNotFoundException(message: String) : RuntimeException(message)
 
+    class ReportNumberNotFoundException(message: String): RuntimeException(message)
+
+    fun reportComment(commentId: Int, claimCode: Int): Int {
+       for(comment in comments) {
+           if(commentId == comment.id) {
+               for (report in reports) {
+                   if(claimCode == report) {
+                       return 1
+                   }
+                   return throw ReportNumberNotFoundException("Report is not found")
+               }
+           }
+           return throw PostNotFoundException("Post is not found")
+       }
+        return -1
     }
 
     fun createComment(postId: Int, comment: Comment): Comment {
-        for(post in posts) {
-            if(postId == post.id) {
-                comments += comment
-                return comments.last()
+                    for(post in posts) {
+                        if(postId == post.id) {
+                            comments += comment
+                            return comments.last()
             }
         }
         return throw PostNotFoundException("Post is not found")
-    }
-
-    fun reportComment(postId: Int) {
-
     }
 
     fun update(post: Post): Boolean {

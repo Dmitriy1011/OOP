@@ -98,7 +98,7 @@ class WallServiceUpdateTest {
         )
 
         val updateResult = Post(
-            id = 3,
+            id = 4,
             ownerId = 11,
             createdBy = "Kelly Chan",
             date = 12122022,
@@ -133,6 +133,44 @@ class WallServiceUpdateTest {
 
         println(result2)
         assertFalse(result2)
+    }
+
+    @Test
+    fun createComment() {
+        val service = WallService
+
+        service.add(
+            Post(
+                id = 0,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 1,
+                ownerId = 12,
+                createdBy = "John Doe",
+                date = 12122023,
+                text = "News today",
+                comments = Comment(2, 3, 4, "text", Donut(true, "anything")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true
+            )
+        )
+
+        val result = service.createComment(1, Comment(2, 3, 4, "text", Donut(true, "anything")))
+        println(result)
     }
 
     @Test(expected = PostNotFoundException::class)
@@ -200,6 +238,48 @@ class WallServiceUpdateTest {
         )
 
         service.createComment(10, Comment(7, 5, 6, "text", Donut(true, "some")))
+    }
+
+
+    @Test
+    fun report() {
+        val service = WallService
+
+        service.add(
+            Post(
+                id = 0,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 1,
+                ownerId = 12,
+                createdBy = "John Doe",
+                date = 12122023,
+                text = "News today",
+                comments = Comment(2, 3, 4, "text", Donut(true, "anything")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true
+            )
+        )
+
+        service.createComment(0, Comment(1, 2, 3, "text", Donut(true, "smth")))
+
+        val result = service.reportComment(1, 5)
+
+        println(result)
     }
 }
 
