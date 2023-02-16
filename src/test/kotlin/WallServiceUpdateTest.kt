@@ -282,7 +282,7 @@ class WallServiceUpdateTest {
                 createdBy = "John Doe",
                 date = 12122023,
                 text = "News today",
-                comments = Comment(2, 3, 4, "text", Donut(true, "anything")),
+                comments = Comment(3, 3, 4, "text", Donut(true, "anything")),
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
@@ -297,7 +297,7 @@ class WallServiceUpdateTest {
                 createdBy = "John Doe",
                 date = 12122023,
                 text = "News today",
-                comments = Comment(2, 3, 4, "text", Donut(true, "anything")),
+                comments = Comment(4, 3, 4, "text", Donut(true, "anything")),
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
@@ -305,9 +305,7 @@ class WallServiceUpdateTest {
             )
         )
 
-        service.createComment(0, Comment(1, 2, 3, "text", Donut(true, "smth")))
-        service.createComment(1, Comment(2, 3, 4, "text", Donut(true, "anything")))
-        service.createComment(2, Comment(3, 4, 5, "text", Donut(true, "anything")))
+        service.createComment(2, Comment(1, 3, 4, "text", Donut(true, "anything")))
 
         val result = service.reportComment(1, 5)
 

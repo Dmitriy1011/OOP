@@ -45,32 +45,32 @@ data class Likes(
     val canPublish: Boolean
 )
 
-sealed class Attachments (val type: String)
+sealed class Attachments(val type: String)
 
 data class AudioAttachment(
     val insideAttachment: Audio
-): Attachments ("audio")
+) : Attachments("audio")
 
 data class VideoAttachment(
     val insideAttachment: Video
-): Attachments ("video")
+) : Attachments("video")
 
 data class PhotoAttachment(
     val insideAttachment: Photo
-): Attachments ("photo")
+) : Attachments("photo")
 
 
 data class DocumentAttachment(
     val insideAttachment: Doc
-): Attachments ("doc")
+) : Attachments("doc")
 
 data class LinkAttachment(
     val insideAttachment: Link
-): Attachments ("link")
+) : Attachments("link")
 
 data class wallComment(
     val insideAttachment: Comment
-): Attachments ("wallComment")
+) : Attachments("wallComment")
 
 data class Audio(
     val id: Int,
@@ -153,28 +153,27 @@ object WallService {
 
     class PostNotFoundException(message: String) : RuntimeException(message)
 
-    class ReportNumberNotFoundException(message: String): RuntimeException(message)
+    class ReportNumberNotFoundException(message: String) : RuntimeException(message)
 
     fun reportComment(commentId: Int, claimCode: Int): Int {
-       for(comment in comments) {
-           if(commentId == comment.id) {
-               for (report in reports) {
-                   if(claimCode == report) {
-                       return 1
-                   }
-                   return throw ReportNumberNotFoundException("Report is not found")
-               }
-           }
-           return throw PostNotFoundException("Comment is not found")
-       }
-        return -1
+        for (comment in comments) {
+            if (commentId == comment.id) {
+                for (report in reports) {
+                    if (claimCode == report) {
+                        return 1
+                    }
+                }
+                throw ReportNumberNotFoundException("Report is not found")
+            }
+        }
+        throw PostNotFoundException("Comment is not found")
     }
 
     fun createComment(postId: Int, comment: Comment): Comment {
-                    for(post in posts) {
-                        if(postId == post.id) {
-                            comments += comment
-                            return comments.last()
+        for (post in posts) {
+            if (postId == post.id) {
+                comments += comment
+                return comments.last()
             }
         }
         return throw PostNotFoundException("Post is not found")
