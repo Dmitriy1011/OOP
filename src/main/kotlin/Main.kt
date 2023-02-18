@@ -152,7 +152,6 @@ object WallService {
 
 
     class PostNotFoundException(message: String) : RuntimeException(message)
-
     class ReportNumberNotFoundException(message: String) : RuntimeException(message)
 
     fun reportComment(commentId: Int, claimCode: Int): Int {
@@ -169,7 +168,8 @@ object WallService {
         throw PostNotFoundException("Comment is not found")
     }
 
-    fun createComment(postId: Int, comment: Comment): Comment {
+    fun createComment
+                (postId: Int, comment: Comment): Comment {
         for (post in posts) {
             if (postId == post.id) {
                 comments += comment

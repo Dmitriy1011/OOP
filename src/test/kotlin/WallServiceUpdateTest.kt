@@ -82,7 +82,7 @@ class WallServiceUpdateTest {
             )
         )
 
-        service.add(
+        val addResult = service.add(
             Post(
                 id = 3,
                 ownerId = 10,
@@ -97,42 +97,24 @@ class WallServiceUpdateTest {
             )
         )
 
-        val updateResult = Post(
-            id = 4,
-            ownerId = 11,
-            createdBy = "Kelly Chan",
-            date = 12122022,
-            text = "This article about USA",
-            comments = Comment(5, 6, 7, "text", Donut(true, "when")),
+        val res1 = service.update(addResult)
+        println(addResult.id)
+
+        val res2 = service.update(Post(
+            id = 10,
+            ownerId = 10,
+            createdBy = "Jim Buffalo",
+            date = 12122020,
+            text = "Sights of Saint-Petersburg",
+            comments = Comment(4, 5, 6, "text", Donut(true, "some")),
             likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
             postType = "Article",
             canDelete = false,
             isFavourite = true
-        )
+        ))
 
-        val updateResult2 = Post(
-            id = 5,
-            ownerId = 11,
-            createdBy = "Kelly Chan",
-            date = 12122022,
-            text = "This article about USA",
-            comments = Comment(6, 7, 8, "text", Donut(true, "where")),
-            likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-            postType = "Article",
-            canDelete = false,
-            isFavourite = true
-        )
-
-
-        val result = service.update(updateResult)
-
-        val result2 = service.update(updateResult2)
-
-        println(result)
-        assertTrue(result)
-
-        println(result2)
-        assertFalse(result2)
+        assertTrue(res1)
+        assertFalse(res2)
     }
 
     @Test
@@ -222,7 +204,7 @@ class WallServiceUpdateTest {
             )
         )
 
-        service.add(
+        val res1 = service.add(
             Post(
                 id = 3,
                 ownerId = 10,
@@ -236,6 +218,8 @@ class WallServiceUpdateTest {
                 isFavourite = true
             )
         )
+
+
 
         service.createComment(10, Comment(7, 5, 6, "text", Donut(true, "some")))
     }
@@ -290,7 +274,7 @@ class WallServiceUpdateTest {
             )
         )
 
-        service.add(
+        var post1 = service.add(
             Post(
                 id = 4,
                 ownerId = 12,
@@ -305,11 +289,7 @@ class WallServiceUpdateTest {
             )
         )
 
-        service.createComment(2, Comment(1, 3, 4, "text", Donut(true, "anything")))
-
-        val result = service.reportComment(1, 5)
-
-        println(result)
+        service.createComment(3, Comment(1, 3, 4, "text", Donut(true, "anything")))
     }
 }
 
