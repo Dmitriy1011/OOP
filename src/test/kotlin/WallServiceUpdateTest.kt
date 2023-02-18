@@ -219,9 +219,9 @@ class WallServiceUpdateTest {
             )
         )
 
+        println(res1)
 
-
-        service.createComment(10, Comment(7, 5, 6, "text", Donut(true, "some")))
+        service.createComment(13, Comment(4, 5, 6, "text", Donut(true, "some")))
     }
 
 
