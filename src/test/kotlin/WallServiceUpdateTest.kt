@@ -14,9 +14,69 @@ class WallServiceUpdateTest {
     fun add() {
         val service = WallService
 
-        var result = service.add(
+        service.add(
             Post(
-                id = 0,
+                id = 1,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        val result = service.add(
+            Post(
+                id = 1,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 2,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 3,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 4,
                 ownerId = 11,
                 createdBy = "John Smith",
                 date = 12122022,
@@ -30,91 +90,6 @@ class WallServiceUpdateTest {
         )
 
         assertTrue(result.id > 0)
-        println(result.id)
-    }
-
-    @Test
-    fun update() {
-        val service = WallService
-
-        service.add(
-            Post(
-                id = 0,
-                ownerId = 11,
-                createdBy = "John Smith",
-                date = 12122022,
-                text = "This article about the greatest president of USA - Avraam Linkoln",
-                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
-                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-                postType = "Article",
-                canDelete = false,
-                isFavourite = true,
-            )
-        )
-
-        service.add(
-            Post(
-                id = 1,
-                ownerId = 12,
-                createdBy = "John Doe",
-                date = 12122023,
-                text = "News today",
-                comments = Comment(2, 3, 4, "text", Donut(true, "anything")),
-                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-                postType = "Article",
-                canDelete = false,
-                isFavourite = true
-            )
-        )
-
-        service.add(
-            Post(
-                id = 2,
-                ownerId = 13,
-                createdBy = "Will Chan",
-                date = 12122024,
-                text = "The best movies 2022",
-                comments = Comment(3, 4, 5, "text", Donut(true, "anywhere")),
-                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-                postType = "Article",
-                canDelete = false,
-                isFavourite = true
-            )
-        )
-
-        val addResult = service.add(
-            Post(
-                id = 3,
-                ownerId = 10,
-                createdBy = "Jim Buffalo",
-                date = 12122020,
-                text = "Sights of Saint-Petersburg",
-                comments = Comment(4, 5, 6, "text", Donut(true, "some")),
-                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-                postType = "Article",
-                canDelete = false,
-                isFavourite = true
-            )
-        )
-
-        val res1 = service.update(addResult)
-        println(addResult.id)
-
-        val res2 = service.update(Post(
-            id = 10,
-            ownerId = 10,
-            createdBy = "Jim Buffalo",
-            date = 12122020,
-            text = "Sights of Saint-Petersburg",
-            comments = Comment(4, 5, 6, "text", Donut(true, "some")),
-            likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-            postType = "Article",
-            canDelete = false,
-            isFavourite = true
-        ))
-
-        assertTrue(res1)
-        assertFalse(res2)
     }
 
     @Test
@@ -139,29 +114,6 @@ class WallServiceUpdateTest {
         service.add(
             Post(
                 id = 1,
-                ownerId = 12,
-                createdBy = "John Doe",
-                date = 12122023,
-                text = "News today",
-                comments = Comment(2, 3, 4, "text", Donut(true, "anything")),
-                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
-                postType = "Article",
-                canDelete = false,
-                isFavourite = true
-            )
-        )
-
-        val result = service.createComment(1, Comment(2, 3, 4, "text", Donut(true, "anything")))
-        println(result)
-    }
-
-    @Test(expected = PostNotFoundException::class)
-    fun shouldThrow() {
-        val service = WallService
-
-        service.add(
-            Post(
-                id = 0,
                 ownerId = 11,
                 createdBy = "John Smith",
                 date = 12122022,
@@ -176,54 +128,122 @@ class WallServiceUpdateTest {
 
         service.add(
             Post(
-                id = 1,
-                ownerId = 12,
-                createdBy = "John Doe",
-                date = 12122023,
-                text = "News today",
-                comments = Comment(2, 3, 4, "text", Donut(true, "anything")),
+                id = 2,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
-                isFavourite = true
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 3,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.createComment(2, Comment(1, 5, 6, "text", Donut(true, "some")))
+    }
+
+    @Test
+    fun update() {
+        val service = WallService
+
+        service.add(
+            Post(
+                id = 1,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
             )
         )
 
         service.add(
             Post(
                 id = 2,
-                ownerId = 13,
-                createdBy = "Will Chan",
-                date = 12122024,
-                text = "The best movies 2022",
-                comments = Comment(3, 4, 5, "text", Donut(true, "anywhere")),
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
-                isFavourite = true
+                isFavourite = true,
             )
         )
 
-        val res1 = service.add(
+        service.add(
             Post(
                 id = 3,
-                ownerId = 10,
-                createdBy = "Jim Buffalo",
-                date = 12122020,
-                text = "Sights of Saint-Petersburg",
-                comments = Comment(4, 5, 6, "text", Donut(true, "some")),
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
                 likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
                 postType = "Article",
                 canDelete = false,
-                isFavourite = true
+                isFavourite = true,
             )
         )
 
-        println(res1)
+        val post1 = service.add(
+            Post(
+                id = 4,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
 
-        service.createComment(13, Comment(4, 5, 6, "text", Donut(true, "some")))
+        val post2 =
+            Post(
+                id = 5,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+
+
+        val res1 = service.update(post1)
+        val res2 = service.update(post2)
+
+        assertTrue(res1)
+        assertFalse(res2)
     }
-
 
     @Test
     fun report() {
@@ -261,7 +281,7 @@ class WallServiceUpdateTest {
 
         service.add(
             Post(
-                id = 3,
+                id = 2,
                 ownerId = 12,
                 createdBy = "John Doe",
                 date = 12122023,
@@ -274,7 +294,22 @@ class WallServiceUpdateTest {
             )
         )
 
-        var post1 = service.add(
+        service.add(
+            Post(
+                id = 3,
+                ownerId = 12,
+                createdBy = "John Doe",
+                date = 12122023,
+                text = "News today",
+                comments = Comment(4, 3, 4, "text", Donut(true, "anything")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true
+            )
+        )
+
+        service.add(
             Post(
                 id = 4,
                 ownerId = 12,
@@ -289,7 +324,93 @@ class WallServiceUpdateTest {
             )
         )
 
-        service.createComment(3, Comment(1, 3, 4, "text", Donut(true, "anything")))
+
+        service.createComment(1, Comment(1, 5, 4, "text", Donut(true, "who")))
+        service.createComment(2, Comment(2, 6, 4, "text", Donut(true, "me")))
+        service.createComment(3, Comment(3, 6, 4, "text", Donut(true, "me")))
+
+        service.reportComment(1, 2)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        val service = WallService
+
+        service.add(
+            Post(
+                id = 0,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 1,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 2,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+        service.add(
+            Post(
+                id = 3,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+
+
+        service.add(Post(
+                id = 4,
+                ownerId = 11,
+                createdBy = "John Smith",
+                date = 12122022,
+                text = "This article about the greatest president of USA - Avraam Linkoln",
+                comments = Comment(1, 2, 3, "text", Donut(true, "smth")),
+                likes = Likes(10, userLikes = true, canLike = true, canPublish = true),
+                postType = "Article",
+                canDelete = false,
+                isFavourite = true,
+            )
+        )
+        service.createComment(10, Comment(4, 5, 6, "text", Donut(true, "some")))
     }
 }
 

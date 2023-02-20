@@ -133,11 +133,14 @@ data class ReportComment(
 )
 
 class PostNotFoundException(message: String) : RuntimeException(message)
+class ReportNumberNotFoundException(message: String) : RuntimeException(message)
 
 object WallService {
 
     fun clear() {
         posts = emptyArray()
+        comments = emptyArray()
+        privateId = 0
     }
 
     private var posts = emptyArray<Post>()
@@ -149,10 +152,6 @@ object WallService {
         posts += post.copy(id = privateId++)
         return posts.last()
     }
-
-
-    class PostNotFoundException(message: String) : RuntimeException(message)
-    class ReportNumberNotFoundException(message: String) : RuntimeException(message)
 
     fun reportComment(commentId: Int, claimCode: Int): Int {
         for (comment in comments) {
@@ -168,8 +167,7 @@ object WallService {
         throw PostNotFoundException("Comment is not found")
     }
 
-    fun createComment
-                (postId: Int, comment: Comment): Comment {
+    fun createComment(postId: Int, comment: Comment): Comment {
         for (post in posts) {
             if (postId == post.id) {
                 comments += comment
